@@ -59,7 +59,7 @@ endif()
 option(SPDLOG_BUILD_ALL "Build all artifacts" OFF)
 
 # build shared option
-option(SPDLOG_BUILD_SHARED "Build shared library" OFF)
+option(SPDLOG_BUILD_SHARED "Build shared library" ON)
 
 # precompiled headers option
 option(SPDLOG_ENABLE_PCH "Build static or shared library using precompiled header to speed up compilation time" OFF)
@@ -68,15 +68,15 @@ option(SPDLOG_ENABLE_PCH "Build static or shared library using precompiled heade
 option(SPDLOG_BUILD_PIC "Build position independent code (-fPIC)" OFF)
 
 # example options
-option(SPDLOG_BUILD_EXAMPLE "Build example" ${SPDLOG_MASTER_PROJECT})
-option(SPDLOG_BUILD_EXAMPLE_HO "Build header only example" OFF)
+# option(SPDLOG_BUILD_EXAMPLE "Build example" ${SPDLOG_MASTER_PROJECT})
+# option(SPDLOG_BUILD_EXAMPLE_HO "Build header only example" OFF)
 
 # testing options
 option(SPDLOG_BUILD_TESTS "Build tests" OFF)
 option(SPDLOG_BUILD_TESTS_HO "Build tests using the header only version" OFF)
 
 # bench options
-option(SPDLOG_BUILD_BENCH "Build benchmarks (Requires https://github.com/google/benchmark.git to be installed)" OFF)
+# option(SPDLOG_BUILD_BENCH "Build benchmarks (Requires https://github.com/google/benchmark.git to be installed)" OFF)
 
 # sanitizer options
 option(SPDLOG_SANITIZE_ADDRESS "Enable address sanitizer in tests" OFF)
@@ -271,25 +271,25 @@ endif()
 # ---------------------------------------------------------------------------------------
 # Build binaries
 # ---------------------------------------------------------------------------------------
-if(SPDLOG_BUILD_EXAMPLE OR SPDLOG_BUILD_EXAMPLE_HO OR SPDLOG_BUILD_ALL)
-    message(STATUS "Generating example(s)")
-    add_subdirectory(example)
-    spdlog_enable_warnings(example)
-    if(SPDLOG_BUILD_EXAMPLE_HO)
-        spdlog_enable_warnings(example_header_only)
-    endif()
-endif()
+# if(SPDLOG_BUILD_EXAMPLE OR SPDLOG_BUILD_EXAMPLE_HO OR SPDLOG_BUILD_ALL)
+#     message(STATUS "Generating example(s)")
+#     add_subdirectory(example)
+#     spdlog_enable_warnings(example)
+#     if(SPDLOG_BUILD_EXAMPLE_HO)
+#         spdlog_enable_warnings(example_header_only)
+#     endif()
+# endif()
 
-if(SPDLOG_BUILD_TESTS OR SPDLOG_BUILD_TESTS_HO OR SPDLOG_BUILD_ALL)
-    message(STATUS "Generating tests")
-    enable_testing()
-    add_subdirectory(tests)
-endif()
+# if(SPDLOG_BUILD_TESTS OR SPDLOG_BUILD_TESTS_HO OR SPDLOG_BUILD_ALL)
+#     message(STATUS "Generating tests")
+#     enable_testing()
+#     add_subdirectory(tests)
+# endif()
 
-if(SPDLOG_BUILD_BENCH OR SPDLOG_BUILD_ALL)
-    message(STATUS "Generating benchmarks")
-    add_subdirectory(bench)
-endif()
+# if(SPDLOG_BUILD_BENCH OR SPDLOG_BUILD_ALL)
+#     message(STATUS "Generating benchmarks")
+#     add_subdirectory(bench)
+# endif()
 
 # ---------------------------------------------------------------------------------------
 # Install
